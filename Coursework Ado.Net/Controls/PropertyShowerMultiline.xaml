@@ -1,0 +1,19 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="Coursework_Ado.Net.PropertyShowerMultiline"
+	x:Name="UserControl"
+	d:DesignWidth="500" d:DesignHeight="250">
+
+	<Grid KeyDown="XPropertyValue_KeyDown_1" x:Name="LayoutRoot">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<TextBlock FontSize="18" x:Name="XPropertyName"></TextBlock>
+        <TextBox FontSize="18" MinWidth="500" MinHeight="200" x:Name="XPropertyValue" TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="1" Background="Transparent" IsReadOnly="True" BorderThickness="0"></TextBox>
+	</Grid>
+</UserControl>

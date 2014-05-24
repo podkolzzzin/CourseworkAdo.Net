@@ -1,0 +1,67 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:local="clr-namespace:Coursework_Ado.Net"
+	mc:Ignorable="d"
+	x:Class="Coursework_Ado.Net.PCompanyInfoForm"
+	x:Name="UserControl"	
+	
+	d:DesignWidth="640" d:DesignHeight="480">
+	<UserControl.Resources>
+		<Storyboard x:Key="OnLoaded1">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LayoutRoot">
+				<EasingDoubleKeyFrame KeyTime="0" Value="-600"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutRoot">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="OnUnloaded1">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LayoutRoot">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="600"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutRoot">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+	<UserControl.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource OnLoaded1}"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="FrameworkElement.Unloaded">
+			<BeginStoryboard x:Name="OnUnloaded1_BeginStoryboard" Storyboard="{StaticResource OnUnloaded1}"/>
+		</EventTrigger>
+	</UserControl.Triggers>
+	<Grid>
+		<Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5">
+			<Grid.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Grid.RenderTransform>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="150"/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="240"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			<Image x:Name="XCompanyAvatar"></Image>
+			<ListView x:Name="XCompanyInfoList" Grid.RowSpan="2" Grid.Column="1" Background="Transparent" BorderThickness="0"></ListView>
+			<StackPanel Grid.Column="0" Grid.Row="1">
+				<local:Link x:Name="XVacancies" Text="Вакансии компании"></local:Link>
+				<local:Link x:Name="XComments" Text="Отзывы о компании" Href="PCommants.xaml"></local:Link>
+                <Button FontSize="18" x:Name="XSubscribeButton" Click="XSubscribeButton_Click_1">Подписаться</Button>
+			</StackPanel>
+		</Grid>
+	</Grid>
+</UserControl>
